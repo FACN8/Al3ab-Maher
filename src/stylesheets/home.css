@@ -1,0 +1,17 @@
+#main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#play-button {
+    color: black;
+    background-color: rgb(221, 245, 255);
+    text-decoration: none;
+    padding: 1rem 2rem;
+    font-size: 4rem;
+    margin-top: 10rem;
+    border: solid gray 1px;
+    border-radius: 1rem;
+}
