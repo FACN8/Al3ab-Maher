@@ -1,0 +1,39 @@
+/* #registerForm {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+    border: solid black 1px;
+    border-radius: 0.5rem;
+}
+
+#registerForm input {
+    border-radius: 0.5rem;
+    outline: none;
+    padding: 0.6rem;
+    margin: 1rem;
+    width: 20rem;
+    height: 1.3rem;
+    font-size: large;
+}
+
+#registerForm button {
+    border: solid gray 1px;
+    border-radius: 0.5rem;
+    background-color: rgb(235, 235, 235);
+    outline: none;
+    padding: 0.2rem;
+    margin: 1rem;
+    width: 10rem;
+    height: 3rem;
+    font-size: large;
+    cursor: pointer;
+} */
+
+.grayBorder {
+    border: solid gray 1px;
+}
+
+.redBorder {
+    border: solid red 1px;
+}
