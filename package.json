@@ -1,0 +1,38 @@
+{
+  "name": "Al3ab-Maher",
+  "version": "1.0.0",
+  "description": "El3abo m3na b al3ab Maher!",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "bcrypt": "^3.0.8",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "jest": "^25.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^2.0.2",
+    "supertest": "^4.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/server/app.js",
+    "build:db": "node src/database/db_build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FACN8/Al3ab-Maher.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FACN8/Al3ab-Maher/issues"
+  },
+  "homepage": "https://github.com/FACN8/Al3ab-Maher#readme"
+}
