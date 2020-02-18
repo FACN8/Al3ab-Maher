@@ -29,8 +29,8 @@ create table questions (
 
 );
 
-INSERT INTO users(questions , option_1,option_2,option_3) 
+INSERT INTO users(questions , option_1,option_2,option_3,answer) 
 VALUES
-('1+1=?','1','2','3','2')
-('1+2=?','1','2','3','3')
-('1+0=?','1','2','3','1')
+('1+1=?','1','2','3','2',
+('1+2=?','1','2','3','3'),
+('1+0=?','1','2','3','1');
