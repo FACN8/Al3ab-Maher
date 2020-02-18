@@ -1,13 +1,52 @@
-/* #registerForm {
+.grayBorder {
+    border: solid gray 1px;
+}
+
+.redBorder {
+    border: solid red 1px;
+}
+
+#login-form{
+    border-radius: 0.5rem;
+    outline: none;
+    padding: 0.6rem;
+    width: 50rem;
+    height: 10rem;
+    font-size: large;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-left: 32rem;
+   
+
+}   
+#login-password, #login-username{
+    border-radius: 0.5rem;
+    outline: none;
+    padding: 0.6rem;
+    margin-left: 1rem;
+    width: 20rem;
+    height: 1.3rem;
+    font-size: large;
+}
+.submit{
+    width: 5rem ;
+    height: 2rem;
+    margin-left: 2rem;
+
+}
+/* register */
+#register-form{
+    width: 50rem ;
     display: flex;
     align-items: center;
     flex-direction: column;
     padding: 1rem;
-    border: solid black 1px;
     border-radius: 0.5rem;
-}
+    margin-left: 35rem;
 
-#registerForm input {
+}
+#register-confirm-password,#register-password,#register-username{
     border-radius: 0.5rem;
     outline: none;
     padding: 0.6rem;
@@ -16,24 +55,6 @@
     height: 1.3rem;
     font-size: large;
 }
+.submit_register{
 
-#registerForm button {
-    border: solid gray 1px;
-    border-radius: 0.5rem;
-    background-color: rgb(235, 235, 235);
-    outline: none;
-    padding: 0.2rem;
-    margin: 1rem;
-    width: 10rem;
-    height: 3rem;
-    font-size: large;
-    cursor: pointer;
-} */
-
-.grayBorder {
-    border: solid gray 1px;
-}
-
-.redBorder {
-    border: solid red 1px;
 }

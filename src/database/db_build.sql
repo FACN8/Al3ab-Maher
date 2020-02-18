@@ -12,7 +12,7 @@ CREATE TABLE users (
 INSERT INTO
     users(user_name, user_password, user_score)
 VALUES
-    ('fatmeeh', '123', 0),
+    ('fatmeeh', 'fatmeeh123', 0),
     ('ivan', '123', 0),
     ('najwan', '123', 0);
 
