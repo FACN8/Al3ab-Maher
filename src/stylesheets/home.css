@@ -1,11 +1,11 @@
-#main-container {
+.main-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-#play-button {
+.play-button {
     color: black;
     background-color: rgb(221, 245, 255);
     text-decoration: none;

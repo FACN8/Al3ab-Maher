@@ -9,7 +9,7 @@ const authenticate = require('./authenticate.js');
 
 router.get('/', /*middlewares.authCheck,*/ home.get);
 router.get('/game', /*middlewares.authCheck,*/ game.get);
-// router.get('/authenticate', authenticate.get);
+router.get('/authenticate', authenticate.get);
 // router.post('/addUser', authenticate.addUser);
 // router.get('/logout', authenticate.logout);
 // router.use(error.client);

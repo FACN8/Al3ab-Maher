@@ -1,0 +1,51 @@
+<form id="login-form" action="/authenticate">
+    <input id="login-username" class="grayBorder" type="text" name="Username" placeholder="Username">
+    <input id="login-password" class="grayBorder" type="password" name="Password" placeholder="Password">
+    <input class="submit" type="submit" value="Login">
+</form>
+
+<form id="register-form" action="/register">
+    <input id="register-username" type="text" name="Username" placeholder="Username">
+    <input id="register-password" type="password" name="Password" placeholder="Password">
+    <input id="register-confirm-password" type="password" name="Confirm Password" placeholder="Confirm Password">
+    <input class="submit" type="submit" value="Register">
+</form>
+
+<link rel="stylesheet" href="../stylesheets/authenticate.css">
+<script>
+    const loginForm = document.querySelector('#login-form');
+    const loginUsername = document.querySelector('#login-username');
+    const loginPassword = document.querySelector('#login-password');
+
+    const usernameRegExp = /(?=.{3,})/;
+    const passwordRegExp = /(?=.{8,})/;
+
+    const verifyLogin = (event) => {
+        event.preventDefault();
+
+        let failed = false;
+
+        if (!usernameRegExp.test(loginUsername.value)) {
+            loginUsername.className = loginUsername.className.replace('grayBorder', 'redBorder');
+            failed = true;
+        } else {
+            loginUsername.className = loginUsername.className.replace('redBorder', 'grayBorder');
+        }
+
+        if (!passwordRegExp.test(loginPassword.value)) {
+            loginPassword.className = loginPassword.className.replace('grayBorder', 'redBorder');
+            failed = true;
+        } else {
+            loginPassword.className = loginPassword.className.replace('redBorder', 'grayBorder');
+        }
+
+        if (failed) {
+            //errSpan.style.display = 'flex';
+            return;
+        }
+
+        //AUTHENTICATE HERE
+    };
+
+    loginForm.addEventListener('submit', verifyLogin);
+</script>
