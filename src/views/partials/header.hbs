@@ -2,6 +2,9 @@
     <p class="nav-item" id="title">{{title}}</p>
     <a class="nav-item" href="/">Home</a>
     {{#if logged_in}}
+     <div class="hud">
+    Score: <span id="score" class="score">{{score}}</span>
+  </div>
     <a class="nav-item" href="/logout">Logout</a>
     {{else}}
     <a class="nav-item" href="/authenticate">Login / Register</a>
