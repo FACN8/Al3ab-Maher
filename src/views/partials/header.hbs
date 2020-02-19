@@ -1,7 +1,7 @@
 <div id="header-container">
     <p class="nav-item" id="title">{{title}}</p>
     <a class="nav-item" href="/">Home</a>
-    {{#if logged_in}}
+    {{#if signed_in}}
     <a class="nav-item" href="/logout">Logout</a>
     {{else}}
     <a class="nav-item" href="/authenticate">Login / Register</a>
