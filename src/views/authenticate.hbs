@@ -1,40 +1,38 @@
-<div class="all">
-    <form id="register-form" action="/register">
+<div class="auth-container">
+    <form id="register-form" class="auth-form">
         <h1> Sign Up</h1>
-        <div class=register-row>
-            <input class="text-input" id="register-username" type="text" name="Username" required value="">
-            <h1 class="label">User Name</h1>
-        </div>
-        <div class=register-row>
-            <input class="text-input" id="register-password" type="password" name="Password" required>
-            <h1 class="label">password</h1>
-        </div>
-        <div class=register-row>
+        <input class="text-input" id="register-username" type="text" name="Username" placeholder="Username">
+        <input class="text-input" id="register-password" type="password" name="Password" placeholder="Password">
+        <input class="text-input" id="register-confirm-password" type="password" name="Confirm Password"
+            placeholder="Confirm Password">
+        <span id="register-error" style="display: none; color: red; font-size: large;">Please check your input.</span>
+        <input class="submit" type="submit" value="REGISTER">
+    </form>
 
-            
-            <input class="text-input" id="register-confirm-password" type="password" name="Confirm Password"
-                required>
-                <h1 class="label">password</h1>
-        </div>
-
-        <input class="submit" type="submit" value="Sign Up">
-
-</form>
-
-<form id="login-form" action="/authenticate">
-    <h1 >Log In</h1>
-    <input class="text-input" id="login-username" class="grayBorder" type="text" name="Username" placeholder="Username">
-    <input class="text-input" id="login-password" class="grayBorder" type="password" name="Password" placeholder="Password">
-    <input class="submit" type="submit" value="LogIn">
-</form>
-
+    <form id="login-form" class="auth-form">
+        <h1>Log In</h1>
+        <input class="text-input" id="login-username" class="grayBorder" type="text" name="Username"
+            placeholder="Username">
+        <input class="text-input" id="login-password" class="grayBorder" type="password" name="Password"
+            placeholder="Password">
+        <span id="login-error" style="display: none; color: red; font-size: large;">Please check your input.</span>
+        <input class="submit" type="submit" value="LOGIN">
+    </form>
 </div>
 
 <link rel="stylesheet" href="../stylesheets/authenticate.css">
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
+    const registerForm = document.querySelector('#register-form');
+    const registerUsername = document.querySelector('#register-username');
+    const registerPassword = document.querySelector('#register-password');
+    const registerConfirmPassword = document.querySelector('#register-confirm-password');
+    const registerErrSpan = document.querySelector('#register-error');
+
     const loginForm = document.querySelector('#login-form');
     const loginUsername = document.querySelector('#login-username');
     const loginPassword = document.querySelector('#login-password');
+    const loginErrSpan = document.querySelector('#login-error');
 
     const usernameRegExp = /(?=.{3,})/;
     const passwordRegExp = /(?=.{8,})/;
@@ -42,76 +40,84 @@
     const verifyLogin = (event) => {
         event.preventDefault();
 
+        if (checkInputs([
+            {
+                regExp: usernameRegExp,
+                input: loginUsername,
+                confirmInput: loginUsername
+            },
+            {
+                regExp: passwordRegExp,
+                input: loginPassword,
+                confirmInput: loginPassword
+            }
+        ], loginErrSpan)) return;
+
+        axios.post('/login', {
+            username: loginUsername.value,
+            password: loginPassword.value
+        })
+            .then(response => {
+                window.location.href = '/';
+            })
+            .catch(error => {
+                console.log(error);
+                alert('Incorrect username or password.');
+            });
+    };
+
+    const verifyRegister = (event) => {
+        event.preventDefault();
+
+        if (checkInputs([
+            {
+                regExp: usernameRegExp,
+                input: registerUsername,
+                confirmInput: registerUsername
+            },
+            {
+                regExp: passwordRegExp,
+                input: registerPassword,
+                confirmInput: registerConfirmPassword
+            }
+        ], registerErrSpan)) return;
+
+        axios.post('/register', {
+            username: registerUsername.value,
+            password: registerPassword.value
+        })
+            .then(response => {
+                window.location.href = '/authenticate';
+            })
+            .catch(error => {
+                alert('Register failed');
+                window.location.href = '/authenticate';
+            });
+    };
+
+    const checkInputs = (arrayOfInputs, errSpan) => {
         let failed = false;
-
-        if (!usernameRegExp.test(loginUsername.value)) {
-            loginUsername.className = loginUsername.className.replace('grayBorder', 'redBorder');
-            failed = true;
-        } else {
-            loginUsername.className = loginUsername.className.replace('redBorder', 'grayBorder');
-        }
-
-        if (!passwordRegExp.test(loginPassword.value)) {
-            loginPassword.className = loginPassword.className.replace('grayBorder', 'redBorder');
-            failed = true;
-        } else {
-            loginPassword.className = loginPassword.className.replace('redBorder', 'grayBorder');
-        }
-
+        arrayOfInputs.forEach((obj) => {
+            if (!obj.regExp.test(obj.input.value) ||
+                obj.confirmInput.value !== obj.input.value) {
+                if (!obj.input.classList.contains('redBorder')) {
+                    obj.input.classList.add('redBorder');
+                }
+                if (!obj.confirmInput.classList.contains('redBorder')) {
+                    obj.confirmInput.classList.add('redBorder');
+                }
+                failed = true;
+            } else {
+                obj.input.classList.remove('redBorder');
+                obj.confirmInput.classList.remove('redBorder');
+            }
+        });
         if (failed) {
-            //errSpan.style.display = 'flex';
-            return;
+            errSpan.style.display = 'flex';
         }
-
-        //AUTHENTICATE HERE
+        return failed;
     };
 
     loginForm.addEventListener('submit', verifyLogin);
+    registerForm.addEventListener('submit', verifyRegister);
 </script>
-
-
-
-<script>
-    const registerform = document.querySelector('#register-form');
-    const registerUsername = document.querySelector('#register-username');
-    const registerPassword = document.querySelector('register-password');
-    const egisterConfirmPassword = document.querySelector('#egister-confirm-password');
-
-    const usernameRegExp = /(?=.{3,})/;
-    const passwordRegExp = /(?=.{8,})/;
-
-    const verifyLogin = (event) => {
-        event.preventDefault();
-
-        let failed = false;
-
-        if (!usernameRegExp.test(loginUsername.value)) {
-            loginUsername.className = loginUsername.className.replace('grayBorder', 'redBorder');
-            failed = true;
-        } else {
-            loginUsername.className = loginUsername.className.replace('redBorder', 'grayBorder');
-        }
-
-        if (!passwordRegExp.test(registerPassword.value)) {
-            registerPassword.className = registerPassword.className.replace('grayBorder', 'redBorder');
-            failed = true;
-        } else {
-            registerPassword.className = registerPassword.className.replace('redBorder', 'grayBorder');
-        }
-        if (!passwordRegExp.test(registerPassword.value)) {
-            egisterConfirmPassword.className = loginPassword.className.replace('grayBorder', 'redBorder');
-            failed = true;
-        } else {
-            loginPassword.className = loginPassword.className.replace('redBorder', 'grayBorder');
-        }
-
-        if (failed) {
-            //errSpan.style.display = 'flex';
-            return;
-        }
-
-        //AUTHENTICATE HERE
-    };
-
-    loginForm.addEventListener('submit', verifyLogin);
-</script

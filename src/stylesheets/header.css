@@ -2,22 +2,24 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body {
+body, html {
     margin: 0;
+    padding: 0;
 }
 
 #header-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
     margin: 0;
-    background-color:#00CED1;
+    background-color: #00CED1;
     padding: 0.4rem 4rem;
 }
 
 .nav-item {
     font-size: 1.5rem;
-
+    text-decoration: none;
+    color: black;
 }
-

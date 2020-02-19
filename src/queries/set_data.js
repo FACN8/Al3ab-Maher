@@ -1,20 +1,9 @@
-const dbConnection = require("../database/db_connection");
+const dbConnection = require('../database/db_connection.js');
 
-const setAllData = cb => {
-    setUserTable(cb);
-};
+module.exports.setUser = (username, password, cb) => {
+    dbConnection.query(`INSERT INTO users (user_name,user_password,user_score) VALUES ('${username}','${password}',0);`, (error, result) => {
+        if (error) return cb(error);
 
-const setUserTable = cb => {
-    dbConnection.query("INSERT  user_name,user_password,user_score FROM users;", (err, res) => {
-        if (err) return cb(err);
-
-        cb(null, res.rows);
+        cb(null, result.rows);
     });
 };
-
-
-
-module.exports = {
-    setAllData,
-    setUserTable
-}

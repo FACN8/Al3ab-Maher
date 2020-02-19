@@ -10,9 +10,10 @@ const authenticate = require('./authenticate.js');
 router.get('/', /*middlewares.authCheck,*/ home.get);
 router.get('/game', /*middlewares.authCheck,*/ game.get);
 router.get('/authenticate', authenticate.get);
-// router.post('/addUser', authenticate.addUser);
-// router.get('/logout', authenticate.logout);
-// router.use(error.client);
-// router.use(error.server);
+router.post('/login', authenticate.login);
+router.post('/register', authenticate.register);
+router.get('/logout', authenticate.logout);
+router.use(error.client);
+router.use(error.server);
 
 module.exports = router;

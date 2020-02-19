@@ -1,20 +1,14 @@
 BEGIN;
 
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS questions;
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
-    user_name VARCHAR(50) NOT NULL,
-    user_password VARCHAR(50) NOT NULL,
-    user_score VARCHAR(225) NOT NULL
+    user_name VARCHAR(225) NOT NULL,
+    user_password VARCHAR(225) NOT NULL,
+    user_score INTEGER NOT NULL
 );
-
-INSERT INTO
-    users(user_name, user_password, user_score)
-VALUES
-    ('fatmeeh', 'fatmeeh123', 0),
-    ('ivan', '123', 0),
-    ('najwan', '123', 0);
 
 CREATE TABLE questions (
     id SERIAL PRIMARY KEY,
