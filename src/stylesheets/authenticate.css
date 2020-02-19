@@ -6,47 +6,19 @@
     border: solid red 1px;
 }
 
-#login-form{
+#login-form {
     border-radius: 0.5rem;
     outline: none;
     padding: 0.6rem;
-    width: 50rem;
-    height: 10rem;
+    width: 70rem;
     font-size: large;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    margin-left: 32rem;
-   
-
-}   
-#login-password, #login-username{
-    border-radius: 0.5rem;
-    outline: none;
-    padding: 0.6rem;
-    margin-left: 1rem;
-    width: 20rem;
-    height: 1.3rem;
-    font-size: large;
-}
-.submit{
-    width: 5rem ;
-    height: 2rem;
-    margin-left: 2rem;
-
-}
-/* register */
-#register-form{
-    width: 50rem ;
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    margin-left: 35rem;
-
+    margin-left: 10rem;
 }
-#register-confirm-password,#register-password,#register-username{
+
+#login-password, #login-username {
     border-radius: 0.5rem;
     outline: none;
     padding: 0.6rem;
@@ -55,6 +27,78 @@
     height: 1.3rem;
     font-size: large;
 }
-.submit_register{
+
+.submit {
+    width: 5rem;
+    height: 2rem;
+    margin-left: 2rem;
+    background-color: #00CED1;
+    border-radius: 0.5rem;
+}
+
+/* register */
+
+#register-form {
+    width: 50rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-left: 15rem;
+}
+
+#register-confirm-password, #register-password, #register-username {
+    border-radius: 0.5rem;
+    outline: none;
+    padding: 0.6rem;
+    margin: 1rem;
+    width: 20rem;
+    height: 1.3rem;
+    font-size: medium;
+}
+
+.register-row {
+    width: 30rem;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    position: relative;
+}
+
+.all {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+   
+}
+
+.label {
+    position: absolute;
+    font-size: 20px;
+    top: 10%;
+    left: 5%;
+    transition: all 0.5s;
+}
+
+.text-input:focus ~ .label,
+.text-input:not(:focus):valid ~ .label {
+    font-size: 18px;
+    top: -35%;
+}
+.text-input:focus {
+    border: 1px solid #00CED1;
+    
+}
+
+.text-input{
+    border: 1px solid gray;
 
 }
+
+
+@media (max-width: 450px) {
+    .all {
+      width: calc(100% - 30px);
+    }
+  }
