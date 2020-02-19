@@ -1,20 +1,21 @@
-const dbConnection = require("../database/db_connection");
+const dbConnection = require("../database/db_connection.js");
 
-const getAllData = cb => {
+module.exports.getAllData = cb => {
     getUserTable(cb);
 };
 
-const getUserTable = cb => {
-    dbConnection.query("SELECT * FROM users;", (err, res) => {
+module.exports.getUserTable = cb => {
+    dbConnection.query(`SELECT * FROM users;`, (err, res) => {
         if (err) return cb(err);
 
         cb(null, res.rows);
     });
 };
 
+module.exports.getUser = (username, cb) => {
+    dbConnection.query(`SELECT * FROM users WHERE user_name='${username}';`, (error, result) => {
+        if (error) return cb(error);
 
-
-module.exports = {
-    getAllData,
-    getUserTable
-}
+        cb(null, result.rows[0]);
+    });
+};
