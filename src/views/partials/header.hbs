@@ -1,10 +1,12 @@
 <div id="header-container">
     <p class="nav-item" id="title">{{title}}</p>
     <a class="nav-item" href="/">Home</a>
+login-logout
     {{#if signed_in}}
-    <a class="nav-item" href="/logout">Logout</a>
-    {{else}}
-    <a class="nav-item" href="/authenticate">Login / Register</a>
-    {{/if}}
+    
+    {{#if logged_in}}
+     <div class="hud">
+    Score: <span id="score" class="score">{{score}}</span>
+  </div>
 </div>
 <link rel="stylesheet" href="../../stylesheets/header.css">
