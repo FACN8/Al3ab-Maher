@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 
 module.exports.get = (req, res) => {
     res.render('authenticate', {
-        signed_in: false,
+        signed_in: req.cookies.signed_in,
         title: 'Authentication'
     });
 };
@@ -58,5 +58,7 @@ module.exports.register = (req, res) => {
 };
 
 module.exports.logout = (req, res) => {
-
+    res.clearCookie('signed_in');
+    res.clearCookie('access_token');
+    res.redirect('/authenticate');
 };
